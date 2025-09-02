@@ -1,0 +1,337 @@
+/* School Bell Manager - Colorful Flat Design */
+:root {
+  /* Primary Colors */
+  --primary: #004643; /* Blue */
+  --primary-light: #007474; /* Lighter blue */
+  --primary-dark: #007a74; /* Darker blue */
+
+  /* Secondary Colors */
+  --secondary: #757575; /* Green */
+  --secondary-light: #8f8f8f; /* Lighter green */
+  --secondary-dark: #757575; /* Darker green */
+
+  /* Accent Colors */
+  --accent: #e74c3c; /* Red */
+  --accent-light: #ec7063; /* Lighter red */
+  --accent-dark: #c0392b; /* Darker red */
+
+  /* Neutral Colors */
+  --background: #ecf0f1; /* Light gray */
+  --card-bg: #ffffff; /* White */
+  --text: #2c3e50; /* Dark blue-gray */
+  --text-light: #7f8c8d; /* Medium gray */
+
+  /* Status Colors */
+  --success: #20bf55; /* Green */
+  --warning: #f39c12; /* Orange */
+  --danger: #e74c3c; /* Red */
+  --info: #3498db; /* Blue */
+
+  /* UI Colors */
+  --border: #bdc3c7; /* Light gray border */
+  --shadow: rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.btn.btn-outline-primary:hover {
+  color: white;
+  background-color: var(--primary-light);
+  border-color: var(--primary-dark);
+}
+
+.btn.btn-primary:hover {
+  color: white;
+  background-color: var(--primary);
+  border-color: var(--primary-dark);
+}
+
+.form-check-input:focus {
+  border-color: var(--primary-dark);
+  box-shadow: 0 0 0 0.2rem rgba(0, 70, 67, 0.5);
+}
+
+.form-check-input:checked {
+  background-color: var(--primary);
+  border-color: var(--primary-dark);
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f5f7fa;
+  min-height: 100vh;
+}
+
+.app-header {
+  text-align: center;
+  padding: 30px 0 20px 0;
+}
+
+.app-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 40px 0 20px 0;
+  margin-top: 40px;
+}
+
+.app-footer p {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.app-container {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 0 20px;
+  min-height: 100vh;
+}
+
+.container {
+  padding: 0;
+  max-width: 100%;
+}
+
+.schedule-card {
+  transition: all 0.3s ease;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+  background: #ffffff;
+  overflow: hidden;
+  border: 1px solid #e1e8ed;
+}
+
+.schedule-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.schedule-card.active {
+  background: #e74c3c;
+  color: white;
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+}
+
+.schedule-card.active .schedule-time,
+.schedule-card.active .schedule-name {
+  color: white;
+}
+
+.time-display {
+  font-family: sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.bell-status {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.bell-animation {
+  animation: ring 0.5s ease-in-out infinite alternate;
+  font-size: 2rem;
+}
+
+@keyframes ring {
+  0% {
+    transform: rotate(-15deg) scale(1);
+  }
+  100% {
+    transform: rotate(15deg) scale(1.1);
+  }
+}
+
+.schedule-time {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 8px;
+}
+
+.schedule-name {
+  font-size: 1rem;
+  color: #7f8c8d;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.current-time {
+  background: #ffffff;
+  color: #2c3e50;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e1e8ed;
+}
+
+.add-schedule-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  font-size: 28px;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+  border: none;
+  background: #3498db;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.add-schedule-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(52, 152, 219, 0.4);
+  background: #2980b9;
+}
+
+.schedule-item-mobile {
+  padding: 20px;
+}
+
+.schedule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.schedule-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+
+.schedule-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.schedule-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.schedule-day {
+  color: #95a5a6;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.schedule-toggle {
+  margin: 0;
+}
+
+.active-badge {
+  background: #27ae60;
+  color: white;
+  border-radius: 20px;
+  padding: 8px 15px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 8px rgba(39, 174, 96, 0.3);
+}
+
+.empty-state {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 40px 20px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e1e8ed;
+}
+
+.schedule-count-badge {
+  background: #95a5a6;
+  border: none;
+  border-radius: 15px;
+  font-weight: 600;
+  color: white;
+}
+
+.day-filter {
+  margin-bottom: 1.5rem;
+}
+
+.day-filter h6 {
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.day-filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 0 15px;
+  }
+
+  .schedule-actions {
+    justify-content: center;
+  }
+
+  .current-time {
+    margin: 15px 0;
+    padding: 20px;
+  }
+
+  .time-display {
+    font-size: 1.8rem;
+  }
+
+  .add-schedule-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
+
+  .bell-status {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    transform: none;
+  }
+
+  .app-title {
+    font-size: 2rem;
+  }
+
+  .app-header {
+    padding: 20px 0 15px 0;
+  }
+}
+
+@media (min-width: 769px) {
+  .app-container {
+    padding: 0 40px;
+  }
+}
