@@ -1,21 +1,18 @@
 export const playBell = (repetitions = 1) => {
-  let delay = 0;
-  for (let i = 0; i < repetitions; i++) {
-    setTimeout(() => {
-      play();
-    }, delay);
-    delay += 4500;
-  }
-};
-
-export const play = () => {
+  const audio = document.getElementById("bell-audio");
   try {
-    const audio = document.getElementById("bell-audio");
     audio.volume = 0.7;
     audio.play().catch((error) => {
       console.warn("Could not play bell sound:", error);
       playSystemNotification();
     });
+    let delay = 0;
+    for (let i = 0; i < repetitions - 1; i++) {
+      delay += 4500;
+      setTimeout(() => {
+        audio.currentTime = 0;
+      }, delay);
+    }
   } catch (error) {
     console.warn("Audio not supported:", error);
     playSystemNotification();
